@@ -43,6 +43,15 @@ def edge_by_dilated(threshold_frame):
     return absdiff_img
 
 
+def dilated(frame):
+    kernel = cv.getStructuringElement(cv.MORPH_RECT, (3, 3))
+    # eroded = cv.erode(threshold_img, kernel)
+    dilated = cv.dilate(frame, kernel)
+
+    # res = cv.subtract(threshold_img, eroded)
+    return dilated
+
+
 def find_mid_line(threshold_image, p0, p1, p2, p3):
     threshold_image[threshold_image == 255] = 1
     skeleton0 = morphology.skeletonize(threshold_image)

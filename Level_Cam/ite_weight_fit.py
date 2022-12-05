@@ -44,9 +44,9 @@ def ite_fit(x_num, y_num, max_ite):
     predict00 = []
     for i in range(0, len(x_num)):
         predict00.append(k * x_num[i] + b)
-    print("ko, bo ", k, b)
+    # print("ko, bo ", k, b)
     mse0 = mean_squared_error(y_num, predict00)
-    print("mse weight = 1: ", mse0)
+    # print("mse weight = 1: ", mse0)
     # plt.plot(x_num, y_num, 'o')
     # plt.plot(x_num, predict00, color='green')
     # plt.show()
@@ -67,12 +67,12 @@ def ite_fit(x_num, y_num, max_ite):
                 weight = 0
             vWeights.append(weight)
         k, b = iter_weight_fit(x_num, y_num, vWeights)
-        print("k ,b", k, b)
+        # print("k ,b", k, b)
         predict001 = []
         for i in range(0, len(x_num)):
             predict001.append(k * x_num[i] + b)
         mse1 = mean_squared_error(y_num, predict001)
-        print("mse, ite = ", ite + 1, ": ", mse1)
+        # print("mse, ite = ", ite + 1, ": ", mse1)
         # plt.plot(x_num, y_num, 'o')
     #     plt.plot(x_num, predict001)
     # plt.show()

@@ -37,11 +37,15 @@ def find_zone(edge, h_x, v_y):
         h2.append(sum2)
         sum2 = 0
     # print(h1)
-    i1 = h1.index(max(h1[0: h_x]))
-    i1s = h1.index(max(h1[h_x: w]))
+    i_1_0 = h1[0: h_x]
+    i_1_1 = h1[h_x: w]
+    i1 = i_1_0.index(max(i_1_0))
+    i1s = i_1_1.index(max(i_1_1)) + h_x
 
-    i2 = h2.index(max(h2[0: v_y]))
-    i2s = h2.index(max(h2[v_y: h]))
+    i_2_0 = h2[0: v_y]
+    i_2_1 = h2[v_y: h]
+    i2 = i_2_0.index(max(i_2_0))
+    i2s = i_2_1.index(max(i_2_1)) + v_y
 
     print(i1, i1s, i2, i2s)
     # # print(len(h1))
@@ -60,15 +64,16 @@ def find_zone(edge, h_x, v_y):
     # # sorted(h2)
     # print(h2)
     # print(i2, j2)
-    length1 = int(round((abs(i1s - i1) + 1)/2, 0))
-    length2 = int(round((abs(i2s - i2) + 1)/2, 0))
+    length1 = int(round((abs(i1s - i1) + 1), 0))
+    length2 = int(round((abs(i2s - i2) + 1), 0))
     print(length2)
     start1 = min(i1, i1s) - 1*length1
     end1 = max(i1, i1s) + 1*length1
     start2 = min(i2, i2s) - 1*length2
     end2 = max(i2, i2s) + 1*length2
     print(start1, end1, start2, end2)
-    return start1, end1, start2, end2
+    # return start1, end1, start2, end2
+    return i1, i1s+1, i2, i2s+1
 
 
 # a, b, c, d = find_zone(canny)
@@ -94,7 +99,7 @@ def find_t(f, start, end, index):
 # print(t1)
 # ret, img11 = cv.threshold(frame, t1, 0, cv.THRESH_TOZERO)
 
-global res
+# global res
 
 
 def gray_weight_latest(image, i, start, end):
@@ -103,6 +108,7 @@ def gray_weight_latest(image, i, start, end):
     #     T = pos
     # if pos + T/2 > img.shape[1]:
     #     T = img.shape[1] - pos
+    # global res
     # global res
     # global res
     src = image[i][start: end]
@@ -124,6 +130,17 @@ def gray_weight_latest(image, i, start, end):
         print("error: ZeroDivisionError t==0")
     # print("灰度重心法，第" + str(i) + "次： " + str(res))
     return res
+
+
+def peak_value(image, i, start, end):
+
+    d = 0
+    src = image[i][start: end]
+
+    if src.size != 0:
+        d = np.argmax(src)
+
+    return d + start
 
 
 def prewitt(image):

@@ -1,16 +1,8 @@
-import math
-from collections import deque
-
-import cv2.cv2 as cv
-import matplotlib.pyplot as plt
-import numpy as np
-from sklearn.metrics import mean_squared_error
 # from time_analyze import three_sigma_s as tss
 from testfile.fit_fuc import *
 from fit import *
-from testfile import edgetest
-from testfile.edgetest import *
-from testfile.ite_weight_fit import iter_weight_fit, ite_fit
+from Level_Cam.edgetest import *
+from Level_Cam.ite_weight_fit import ite_fit
 from erode_demo import *
 
 ks = np.load('npdata/k.npy')

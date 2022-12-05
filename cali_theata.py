@@ -1,6 +1,6 @@
 import numpy as np
-ks = np.load('k.npy')
-kx_fix = np.load('theta_fix.npy')
+ks = np.load('./npdata/k_0705.npy')
+kx_fix = np.load('./npdata/theta_fix.npy')
 
 k_x = ks[0][0]
 k_y = ks[0][1]
@@ -8,7 +8,7 @@ k_y = ks[0][1]
 theta_cal = kx_fix[0][0]
 p = ks[0][3]
 
-cali_data_n = np.load('cali_theta_data.npy')
+cali_data_n = np.load('./npdata/cali_theta_data_0705.npy')
 cali_data_l = []
 o1 = []
 o2 = []
@@ -48,6 +48,6 @@ C_THETA_inv = C_THETA_mat.I
 res_cali_theta = C_THETA_inv * C_THETA_T * y1
 print(res_cali_theta)
 print(res_cali_theta[0][0])
-np.save('theta_fix.npy', res_cali_theta)
+np.save('./npdata/theta_fix_0705_n.npy', res_cali_theta)
 
 

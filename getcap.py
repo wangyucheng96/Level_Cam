@@ -1,8 +1,4 @@
 from fit import *
-from testfile.fit_fuc import *
-from testfile import edgetest
-from testfile.edgetest import *
-from testfile.ite_weight_fit import iter_weight_fit, ite_fit
 from erode_demo import *
 # 解决中文显示问题
 plt.rcParams['font.sans-serif'] = ['SimHei']
